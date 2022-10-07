@@ -1,26 +1,21 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useReducer } from "react";
 
 const appReducer = (state, action) => {
   switch (action.type) {
-    case 'DELETE_POST': {
-      return {
-        ...state,
-        posts: state.posts.filter((post) => post.id !== action.payload),
-      };
-    }
-    case 'ADD_POST': {
+    // implement delete post action
+    case "ADD_POST": {
       return {
         ...state,
         posts: [action.payload, ...state.posts],
       };
     }
-    case 'SET_POSTS': {
+    case "SET_POSTS": {
       return {
         ...state,
         posts: action.payload,
       };
     }
-    case 'SET_DARK_THEME': {
+    case "SET_DARK_THEME": {
       return {
         ...state,
         darkTheme: action.payload,
@@ -33,28 +28,7 @@ const appReducer = (state, action) => {
 };
 
 const initialState = {
-  posts: [
-    // {
-    //   id: 1,
-    //   title: 'Post One',
-    //   body: 'This is post one, do to it as you please',
-    // },
-    // {
-    //   id: 2,
-    //   title: 'Post Two',
-    //   body: 'This is post two, do to it as you please',
-    // },
-    // {
-    //   id: 3,
-    //   title: 'Post Three',
-    //   body: 'This is post three, do to it as you please',
-    // },
-    // {
-    //   id: 4,
-    //   title: 'Post Four',
-    //   body: 'This is post four, do to it as you please',
-    // },
-  ],
+  posts: [],
   darkTheme: false,
 };
 
@@ -65,28 +39,28 @@ export const AppProvider = ({ children }) => {
 
   const deletePost = (id) => {
     dispatch({
-      type: 'DELETE_POST',
+      type: "DELETE_POST",
       payload: id,
     });
   };
 
   const addPost = (post) => {
     dispatch({
-      type: 'ADD_POST',
+      type: "ADD_POST",
       payload: post,
     });
   };
 
   const setPosts = (posts) => {
     dispatch({
-      type: 'SET_POSTS',
+      type: "SET_POSTS",
       payload: posts,
-    })
-  }
+    });
+  };
 
   const setDarkTheme = (bool) => {
     dispatch({
-      type: 'SET_DARK_THEME',
+      type: "SET_DARK_THEME",
       payload: bool,
     });
   };
