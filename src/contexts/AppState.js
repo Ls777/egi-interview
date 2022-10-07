@@ -2,10 +2,7 @@ import { createContext, useReducer } from "react";
 
 const appReducer = (state, action) => {
   switch (action.type) {
-    case "DELETE_POST": {
-      //implement
-      return {};
-    }
+    // implement delete post action
     case "ADD_POST": {
       return {
         ...state,
