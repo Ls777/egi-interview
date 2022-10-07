@@ -3,6 +3,7 @@ import { createContext, useReducer } from "react";
 const appReducer = (state, action) => {
   switch (action.type) {
     // implement delete post action
+
     case "ADD_POST": {
       return {
         ...state,
@@ -37,13 +38,6 @@ export const AppContext = createContext(initialState);
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(appReducer, initialState);
 
-  const deletePost = (id) => {
-    dispatch({
-      type: "DELETE_POST",
-      payload: id,
-    });
-  };
-
   const addPost = (post) => {
     dispatch({
       type: "ADD_POST",
@@ -70,7 +64,6 @@ export const AppProvider = ({ children }) => {
       value={{
         posts: state.posts,
         darkTheme: state.darkTheme,
-        deletePost,
         addPost,
         setPosts,
         setDarkTheme,
